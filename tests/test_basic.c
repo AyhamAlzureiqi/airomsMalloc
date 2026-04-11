@@ -12,32 +12,34 @@ int main() {
 
     int *a = airomsMalloc(sizeof(int));
     int *b = airomsMalloc(sizeof(int));
-    int *c = airomsMalloc(sizeof(int));
+
 
     *a = 42;
     *b = 100;
-    *c = 7;
+
 
      printf("before free:\n");
      heap_print();
 
-     airomsFree(b);
-
-     printf("after freeing b:\n");
-     heap_print();
-
      airomsFree(a);
 
-     printf("after freeing a (should coalesce with b):\n");
+     printf("after freeing a:\n");
      heap_print();
 
-     printf("a = %d\n", *a);
-     printf("b = %d\n", *b);
+     int *c = airomsMalloc(sizeof(int));
+     *c = 99;
+
+     printf("after allocating c (should reuse a block):\n");
+     heap_print();
+
+
+
+
+
      printf("a lives at: %p\n", (void *)a);
-     printf("b lives at: %p\n", (void *)b);
-     printf("gap: %ld bytes\n", (char *)b - (char *)a);
+     printf("c lives at: %p\n", (void *)c);
 
-     heap_print();
+
 
 return 0;
 }

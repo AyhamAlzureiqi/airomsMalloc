@@ -5,6 +5,17 @@
 static block_header_t *head = NULL;
 
 void *airomsMalloc(size_t size) {
+
+    //Fit search
+    block_header_t *current = head;
+    while(current != NULL){
+	if (current->is_free == 1 && current->size >= size){
+		current->is_free = 0;
+		return (void *)(current + 1);
+	}
+    current = current->next;
+ }
+
     block_header_t *block_address = sbrk(HEADER_SIZE + size);
 
     //checks if sbrk failed
