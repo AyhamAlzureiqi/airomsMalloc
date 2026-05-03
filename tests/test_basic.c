@@ -10,12 +10,8 @@ int main() {
     printf("block_header_t: %zu bytes\n", sizeof(block_header_t));
     printf("gap will be:    %zu bytes\n", sizeof(block_header_t) + sizeof(int));
 
-    int *a = airomsMalloc(sizeof(int));
-    int *b = airomsMalloc(sizeof(int));
-
-
-    *a = 42;
-    *b = 100;
+    char *a = airomsMalloc(100);
+    char *b = airomsMalloc(10);
 
 
      printf("before free:\n");
@@ -26,20 +22,12 @@ int main() {
      printf("after freeing a:\n");
      heap_print();
 
-     int *c = airomsMalloc(sizeof(int));
-     *c = 99;
+     char *c = airomsMalloc(20);
 
-     printf("after allocating c (should reuse a block):\n");
+     printf("after allocating 20 bytes (should split a block):\n");
      heap_print();
 
 
 
-
-
-     printf("a lives at: %p\n", (void *)a);
-     printf("c lives at: %p\n", (void *)c);
-
-
-
-return 0;
+     return 0;
 }

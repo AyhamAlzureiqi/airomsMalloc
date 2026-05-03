@@ -10,6 +10,17 @@ void *airomsMalloc(size_t size) {
     block_header_t *current = head;
     while(current != NULL){
 	if (current->is_free == 1 && current->size >= size){
+		size_t leftover = current->size - size - HEADER_SIZE;
+		if (leftover > 0){
+			block_header_t *new_block = (block_header_t *)((char *)(current + 1) + size);
+			new_block->size = leftover;
+			new_block->is_free = 1;
+			new_block->next = current->next;
+			new_block->prev = current;
+			current->next = new_block;
+			if (new_block->next != NULL){
+				new_block->next->prev = new_block;}
+			current->size = size;}
 		current->is_free = 0;
 		return (void *)(current + 1);
 	}
