@@ -1,5 +1,6 @@
 #ifndef AIROMS_MALLOC_H
 #define AIROMS_MALLOC_H
+#define ALIGN(size) (((size) + 7) & ~7)
 
 #include <stddef.h>
 

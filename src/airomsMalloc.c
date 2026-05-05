@@ -6,6 +6,8 @@ static block_header_t *head = NULL;
 
 void *airomsMalloc(size_t size) {
 
+    size = ALIGN(size);
+
     //Fit search
     block_header_t *current = head;
     while(current != NULL){
