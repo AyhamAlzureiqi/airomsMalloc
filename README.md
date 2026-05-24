@@ -29,7 +29,6 @@ whether its making them grow using sbrk(), which is how the allocator requests m
 splitting, or creating completely new regions of memory.
 
 
-   - 
 
 ##Design
 
