@@ -1,4 +1,4 @@
-#AiromsMalloc - Memory Allocator in C
+# AiromsMalloc - Memory Allocator in C
 
 airomsMalloc is a system level memory allocator built entirely on C,
 with Free(), Coalescing, and Memory alignment.
