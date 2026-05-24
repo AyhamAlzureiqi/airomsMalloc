@@ -49,14 +49,15 @@ Passes with 0 errors and 0 memory leaks
 
 ##Project Structure
 
-`airomsMalloc/
+```
+airomsMalloc/
  |---src/
  |   |---airomsMalloc.c  # Main program code
  |   |---airomsMalloc.h
  |---tests
  |   |---test_basic.c    # Commands to run and test the allocator
  |---README.md
-
+```
 
 ##Learning Outcomes
 
